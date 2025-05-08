@@ -33,7 +33,7 @@ A lightweight web app that lets anyone build a résumé in minutes, preview it, 
 
 ```bash
 git clone --single-branch -b ResumeBuilder https://github.com/Khuskar/Into_to_web.git
-cd resume-builder
+cd Into_to_web
 
 # 1) create & activate virtualenv
 python3 -m venv venv

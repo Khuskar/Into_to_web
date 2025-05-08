@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Saved Resumes</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <style>
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: .6rem 1rem; border-bottom: 1px solid #ccc; }
+    form { display:inline; }
+  </style>
+</head>
+<body>
+  <h1>Saved Resumes</h1>
+
+  {% if resumes %}
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Created&nbsp;at</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for r in resumes %}
+      <tr>
+        <td>{{ r["id"] }}</td>
+        <td>{{ r["created_at"] }}</td>
+        <td>
+          <!-- View / download -->
+          <a href="{{ url_for('resume_json', resume_id=r['id']) }}" target="_blank">
+            View JSON
+          </a>
+
+          <!-- Delete (POST) -->
+          <form action="{{ url_for('delete_resume', resume_id=r['id']) }}"
+                method="post"
+                onsubmit="return confirm('Delete resume {{ r['id'] }}?');">
+            <button type="submit">Delete</button>
+          </form>
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+    <p>No resumes saved yet.</p>
+  {% endif %}
+
+  <p><a href="{{ url_for('home') }}">← Back to builder</a></p>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Home Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- main stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar bg-white">
+        <div class="container">
+            <div class="navbar-content">
+                <div class="brand-and-toggler">
+                    <a href="{{ url_for('home') }}" class="navbar-brand">
+                        <span class="navbar-brand-text">build <span>resume.</span></span>
+                    </a>
+                    <a href="{{ url_for('dashboard') }}" class="btn btn-link">Dashboard</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <header class="header bg-bright" id="header">
+        <div class="container">
+            <div class="header-content text-center">
+                <h6 class="text-uppercase text-blue-dark fs-14 fw-6 ls-1">
+                    online resume builder
+                </h6>
+
+                <h1 class="lg-title">Best for the Best ones</h1>
+
+                <p class="text-dark fs-18">
+                    Build your resume<br>
+                    in the easiest way possible!
+                </p>
+
+                <a href="{{ url_for('builder') }}" class="btn btn-primary text-uppercase">
+                    create my resume
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer bg-dark">
+        <div class="container text-center">
+            <p class="fs-15 text-white">&copy; {{ config['APP_YEAR'] if config.get('APP_YEAR') else '2025' }} – build.resume</p>
+        </div>
+    </footer>
+
+</body>
+</html>
